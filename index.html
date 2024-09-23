@@ -1,0 +1,156 @@
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Página de pagamento da Connect Store. Pague via Pix e envie seu comprovante para receber seu cartão pré-pago.">
+    <meta name="keywords" content="pagamento, Pix, WhatsApp, Connect Store, cartão pré-pago">
+    <title>Pagamentos - Connect Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F5F7FA;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 375px;
+            border-radius: 8px;         
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 18px;
+            color: #717171;
+            margin: 0;
+        }
+        .header h2 {
+            font-size: 24px;
+            color: #2E3A59;
+            margin: 0;
+        }
+        .payment-method {
+            background-color: #FF6F00;
+            color: #FFFFFF;
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            font-size: 14px;
+        }
+        .payment-details {
+            padding: 15px;
+            border: 1px solid #E0E0E0;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+        }
+        .payment-details h3 {
+            font-size: 16px;
+            color: #2E3A59;
+            margin: 0 0 10px 0;
+        }
+        .payment-details p {
+            font-size: 14px;
+            color: #6B7280;
+            margin: 0 0 20px 0;
+        }
+        .copy-code {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFFFFF;
+            border: 1px solid #00A3E0;
+            color: #00A3E0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        .copy-code:hover {
+            background-color: #00A3E0;
+            color: white;
+        }
+        .copy-code i {
+            margin-right: 10px;
+        }
+        .confirmation {
+            color: green;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .additional-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+        }
+        .additional-info h4 {
+            font-size: 16px;
+            color: #2E3A59;
+            margin: 0 0 10px 0;
+        }
+        .additional-info p {
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 20px;
+        }
+        .whatsapp-link {
+            color: #00A3E0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🕔 Pagamento pendente</h1>
+            <h2>Connect Store</h2>
+        </div>
+        <div class="payment-method">
+            Escolha a forma como você quer realizar o pagamento
+        </div>
+        <div class="payment-details">
+            <h3>Pagar com Pix</h3>
+            <p>Copie a Chave Pix CNPJ <strong>43.701.700/0001-16</strong> e pague utilizando o app do seu banco, através da opção <strong>Pix</strong></p>
+            <div class="copy-code" id="copy-btn" aria-label="Copiar chave Pix">
+                <i class="fas fa-copy"></i> Copiar chave PIX
+            </div>
+            <div class="confirmation" id="confirmation-message" style="display: none;">
+                Chave PIX copiada para área de transferência
+            </div>
+        </div>
+        <div class="additional-info">
+            <h4>Processamento</h4>
+            <p>Após a confirmação do pagamento, envie o comprovante para nossa equipe. Assim que validarmos, você receberá o código do seu cartão pré-pago.</p>
+            <div class="copy-code" id="wpp-btn" aria-label="Enviar comprovante via WhatsApp">
+                <i class="fab fa-whatsapp"></i> Enviar comprovante
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('copy-btn').addEventListener('click', function() {
+            const chavePix = '43.701.700/0001-16';
+            navigator.clipboard.writeText(chavePix).then(function() {
+                document.getElementById('confirmation-message').style.display = 'block';
+                document.getElementById('copy-btn').innerHTML = 'Chave copiada!';
+            }).catch(function(error) {
+                console.error('Falha ao copiar', error);
+            });
+        });
+
+        document.getElementById('wpp-btn').addEventListener('click', function() {
+            window.location.href = 'https://wa.me/+553398801838';
+        });
+    </script>
+</body>
+</html>
